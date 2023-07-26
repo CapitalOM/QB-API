@@ -27,15 +27,17 @@ def read_file(file, keys):
     with open(file, "r") as f:
         lines = f.readlines()
         print(f"Pulling data from {file}")
-        
+
         line = json.loads(lines[0])
 
         # extract data from json based on keys
-        data = []
+        data = {}
         for k in keys:
-            data.append((k, line[k]))
+            data[k] = line[k]
         print(data)
         
+        data.append(("source", file))
+
         # post to API
         r = requests.post('https://qb-api.onrender.com/api/questions', data=data)
         print(r.text)
@@ -79,7 +81,8 @@ def main():
     print(f"Status {QB_API.status_code}: API Render server Connected\n")
 
     # keys for data to extract on
-    keys = ["difficulty", "category", "question", "answer", "source", "tournament", "round", "num", "year"]
+    # 'source' already included
+    keys = ["difficulty", "category", "question", "answer", "tournament", "round", "num", "year"]
 
     # read and extract keyed data from file and upload to API
     read_file(file, keys)
