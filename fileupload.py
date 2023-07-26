@@ -28,19 +28,26 @@ def read_file(file, keys):
         lines = f.readlines()
         print(f"Pulling data from {file}")
 
-        line = json.loads(lines[0])
-
-        # extract data from json based on keys
-        data = {}
-        for k in keys:
-            data[k] = line[k]
-        print(data)
+        count = 0
         
-        data["source"] = file
+        # limit amt for testing
+        amt = 100
+        lines = lines[:amt]
 
-        # post to API
-        r = requests.post('https://qb-api.onrender.com/api/questions', data=data)
-        print(r.text)
+        for l in lines:
+            line = json.loads(l)
+
+            # extract data from json based on keys
+            data = {}
+            for k in keys:
+                data[k] = line[k]
+            # print(data)
+            
+            data["source"] = file
+
+            # post to API
+            r = requests.post('https://qb-api.onrender.com/api/questions', data=data)
+            count += 1
 
         # json_dict = {}
 
@@ -59,10 +66,8 @@ def read_file(file, keys):
 
         # print(json_dict)
 
-        # for l in lines:
-        #     raw_data = json.loads(l)
-
-        print(f"\n{len(lines)} records uploaded to API server.")
+        print(f"\n{count} records uploaded to API server.")
+        return count == amt
 
 def main():
     # check for correct usage
@@ -85,9 +90,9 @@ def main():
     keys = ["difficulty", "category", "question", "answer", "tournament", "round", "num", "year"]
 
     # read and extract keyed data from file and upload to API
-    read_file(file, keys)
-
-    return 0
+    completed = read_file(file, keys)
+    if not completed:
+        print("Upload failed.")
 
 if __name__ == "__main__":
     main()

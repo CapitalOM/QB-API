@@ -1,6 +1,6 @@
 const express = require('express');
 const Question = require('../models/questionModel')
-const {getQuestions, getQuestion, createQuestion, updateQuestion, deleteQuestion} = require('../controllers/questionController')
+const {getQuestions, getQuestion, createQuestion, updateQuestion, deleteQuestion, deleteQuestions} = require('../controllers/questionController')
 
 const router = express.Router();
 
@@ -13,6 +13,8 @@ router.post('/', createQuestion);
 router.put('/:id', updateQuestion);
 
 router.delete('/:id', deleteQuestion);
+
+router.delete('/', deleteQuestions);
 
 // export routes to server
 module.exports = router;

@@ -72,11 +72,23 @@ const deleteQuestion = asyncHandler(async(req, res) => {
     }
 })
 
+// delete all questions
+const deleteQuestions = asyncHandler(async(req, res) => {
+    try {
+        const questions = await Question.findAndDelete({});
+        res.status(200).json(questions);
+    } catch (error) {
+        res.status(500);
+        throw new Error(error.message);
+    }
+})
+
 // export as a module to routes 
 module.exports = {
     getQuestions,
     getQuestion,
     createQuestion,
     updateQuestion,
-    deleteQuestion
+    deleteQuestion,
+    deleteQuestions
 }
