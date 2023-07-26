@@ -36,7 +36,7 @@ def read_file(file, keys):
             data[k] = line[k]
         print(data)
         
-        data.append(("source", file))
+        data["source"] = file
 
         # post to API
         r = requests.post('https://qb-api.onrender.com/api/questions', data=data)
