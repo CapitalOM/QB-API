@@ -75,7 +75,7 @@ const deleteQuestion = asyncHandler(async(req, res) => {
 // delete all questions
 const deleteQuestions = asyncHandler(async(req, res) => {
     try {
-        const questions = await Question.findAndDelete({});
+        const questions = await Question.deleteMany({});
         res.status(200).json(questions);
     } catch (error) {
         res.status(500);
