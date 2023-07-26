@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const questionSchema = mongoose.Schema(
     {
-        level: {
+        difficulty: {
             type: String,
             required: true
         },
