@@ -48,7 +48,7 @@ const updateQuestion = asyncHandler(async(req, res) => {
             throw new Error(`cannot find question with ID ${id}`);
         }
         const updatedQuestion = await Question.findById(id);
-        res.status(200).json(question);
+        res.status(200).json(updatedQuestion);
 
     } catch (error) {
         res.status(500);

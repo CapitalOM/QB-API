@@ -1,18 +1,20 @@
 // configure env from .env file
-require('dotenv').config()
+require('dotenv').config();
 
 // import modules
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const queryType = require('query-types');
 
 // import routes
 const questionRoute = require('./routes/questionRoute');
+const categoryRoute = require('./routes/categoryRoute');
 
 // import middleware
 const errorMiddleware = require('./middleware/errorMiddleware');
 
-const app = express()
+const app = express();
 
 // define .env variables
 const MONGO_URI = process.env.MONGO_URI
@@ -26,13 +28,15 @@ const corsOption = {
 }
 
 // implement middleware
-app.use(express.json()) 
-app.use(express.urlencoded({extended: false}))
-app.use(cors(corsOption))
-app.use(errorMiddleware)
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(cors(corsOption));
+app.use(errorMiddleware);
+app.use(queryType.middleware());
 
 // implement routes
 app.use('/api/questions', questionRoute);
+app.use('/api/categories', categoryRoute);
 
 // connect to MongoDB database
 mongoose.connect(MONGO_URI)
