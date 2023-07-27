@@ -1,10 +1,12 @@
 const express = require('express');
 const Question = require('../models/questionModel')
-const {getQuestions, getQuestion, createQuestion, updateQuestion, deleteQuestion, deleteQuestions} = require('../controllers/questionController')
+const {getQuestions, getRandomQuestions, getQuestion, createQuestion, updateQuestion, deleteQuestion, deleteQuestions} = require('../controllers/questionController')
 
 const router = express.Router();
 
 router.get("/", getQuestions);
+
+router.get("/random", getRandomQuestions);
 
 router.get("/:id", getQuestion);
 

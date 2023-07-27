@@ -13,6 +13,25 @@ const getQuestions = asyncHandler(async(req, res) => {
     }
 })
 
+const getRandomQuestions = asyncHandler(async(req, res) => {
+    try {
+        // extract number of questions to pull (default is 3)
+        let querySize = qs.parse(req.query, { ignoreQueryPrefix: true }) 
+        if (!('size' in querySize)){
+            querySize = { size: 3 };
+        }
+
+        const questions = await Question.aggregate(
+            [ { $sample: querySize } ]
+        );
+        res.status(200).json(questions);
+    } catch (error) {
+        res.status(500);
+        throw new Error(error.message);
+        // res.status(500).json({message: error.message})
+    }
+})
+
 // get a single question
 const getQuestion = asyncHandler(async(req, res) => {
     try {
@@ -86,6 +105,7 @@ const deleteQuestions = asyncHandler(async(req, res) => {
 // export as a module to routes 
 module.exports = {
     getQuestions,
+    getRandomQuestions,
     getQuestion,
     createQuestion,
     updateQuestion,
