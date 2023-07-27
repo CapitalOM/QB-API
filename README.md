@@ -69,9 +69,9 @@ The following methods can be used:
 
 You can get (read) a single question with ID `id` by calling with a `get` request: `/api/questions/id`.
 
-You can also get (read) *all* of the questions stored in the database by calling with a `get` request: `/api/questions/`.
+You can also get (read) randomly selected questions stored in the database by calling with a `get` request: `/api/questions/`. By default, the number of questions chosen is 3, but you can get a different amount `N` via the following query string: `api/questions?size=N`.
 
-You can also get (read) random questions of a specific category `category` stored in the database by calling with a `get` request: `/api/categories/category`. By default, the number of categories chosen is 3, but you can get a different amount `N` via the following query string: `/api/categories/category?size=N`.
+You can also get (read) random questions of a specific category `category` stored in the database by calling with a `get` request: `/api/categories/category`. By default, the number of questions chosen is 3, but you can get a different amount `N` via the following query string: `/api/categories/category?size=N`.
 
 ### Post
 
