@@ -49,23 +49,6 @@ def read_file(file, keys):
             r = requests.post('https://qb-api.onrender.com/api/questions', data=data)
             count += 1
 
-        # json_dict = {}
-
-        # extract specific details abt question
-
-        # json_dict["level"] = line["difficulty"]
-        # json_dict["category"] =  line["category"]
-        # json_dict["question"] = line["question"]
-        # json_dict["answer"] = line["answer"]
-        # json_dict["source"] = file
-        
-        # json_dict["tournament"] = line["tournament"]
-        # json_dict["round"] = line["round"]
-        # json_dict["num"] = line["num"]
-        # json_dict["year"] = line["year"]
-
-        # print(json_dict)
-
         print(f"\n{count} records uploaded to API server.")
         return count == amt
 
@@ -77,6 +60,7 @@ def main():
     elif sys.argv[1][-5:] != ".json":
         print("Error. Please upload a .json file")
         return 1
+    
     # extract file from sys args
     file = sys.argv[1]
 
@@ -87,6 +71,7 @@ def main():
 
     # keys for data to extract on
     # 'source' already included
+    # see /models/questionModel.js for more details abt question JSON structure 
     keys = ["difficulty", "category", "question", "answer", "tournament", "round", "num", "year"]
 
     # read and extract keyed data from file and upload to API
