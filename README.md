@@ -71,6 +71,8 @@ You can get (read) a single question with ID `id` by calling with a `get` reques
 
 You can also get (read) *all* of the questions stored in the database by calling with a `get` request: `/api/questions/`.
 
+You can also get (read) random questions of a specific category `category` stored in the database by calling with a `get` request: `/api/categories/category`. By default, the number of categories chosen is 3, but you can get a different amount `N` via the following query string: `/api/categories/category?size=N`.
+
 ### Post
 
 You can post (create) a single question JSON object by calling with a `post` request: `/api/questions/`.
