@@ -33,12 +33,7 @@ app.use(cors(corsOption))
 app.use(errorMiddleware)
 
 // implement routes
-app.use('/api/products', productRoute);
 app.use('/api/questions', questionRoute);
-
-app.get('/', (req, res) => {
-    res.send('Hello NODE API.')
-})
 
 // connect to MongoDB database
 mongoose.connect(MONGO_URI)
