@@ -1,6 +1,7 @@
 const Category = require('../models/categoryModel')
 const Question = require('../models/questionModel')
 const asyncHandler = require('express-async-handler')
+const qs = require('qs')
 
 // get all questions
 const getCategories = asyncHandler(async(req, res) => {
