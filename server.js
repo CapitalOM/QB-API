@@ -7,7 +7,6 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 // import routes
-const productRoute = require('./routes/productRoute');
 const questionRoute = require('./routes/questionRoute');
 
 // import middleware
