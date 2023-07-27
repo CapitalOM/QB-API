@@ -1,5 +1,5 @@
 # QB-API
-A **REST API** for accessing quiz bowl questions and answers, developed with **Node.js**, **Express.js**, and **MongoDB** and implementing **Model-View-Controller**/Model-Route-Contoller (**MVC**/MRC) architecture.
+A **REST API** for accessing quiz bowl questions and answers, developed with **Node.js**, **Express.js**, and **MongoDB** and implementing **Model-View-Controller**/Model-Route-Controller (**MVC**/MRC) architecture.
 
 ## How do you access it?
 QB-API can be accessed in two ways: on a web server URI or locally.
