@@ -18,7 +18,9 @@ QB-API can be locally by cloning this repository and running the following comma
 
 `npm run serve`
 
-It will then be run on port 3000 of the local host via `localhost:3000/api/questions`.
+It will then be run on port 3000 of the local host via `localhost:3000/api/questions`. 
+
+Note that you must add the variable `MONGO_URI` (which comes from your own MongoDB database configuration) to a `.env` file to access the DB. You can also add `PORT` if you want to change it from 3000, `FRONTEND` if you want to add a frontend, and `NODE_ENV` if you want to change it to `development` and see error codes.
 
 #### Insomnia
 
@@ -84,3 +86,7 @@ You can put (update) a single question JSON object with ID `id` by calling with 
 ### Delete
 
 You can delete a single question JSON object with ID `id` by calling with a `delete` request: `/api/questions/id`
+
+## Further Work
+
+To add to this API, further work is needed to sync the categories storied in the API with the categories in the stored questions. Additionally, authorization can be added to secure the API and the various methods. Finally, more work is needed in streamlining the API calls and the `get` requests for questions as the size of the question DB scales up dramatically. 
