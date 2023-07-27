@@ -1,6 +1,5 @@
 const Question = require('../models/questionModel')
 const asyncHandler = require('express-async-handler')
-// 
 
 // get all questions
 const getQuestions = asyncHandler(async(req, res) => {
